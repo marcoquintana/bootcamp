@@ -22,12 +22,8 @@ public class CustomerController {
 	private CustomerService customerService;
 	
 	@GetMapping
-	public Mono<ResponseEntity<Flux<Customer>>> getAll() {
-		return Mono.just(
-				ResponseEntity.ok()
-				.contentType(MediaType.APPLICATION_JSON)
-				.body(customerService.getAll())
-				);
+	public Flux<Customer> getAll() {
+		return customerService.getAll();
 	}
 	
 	@GetMapping("/{id}")
